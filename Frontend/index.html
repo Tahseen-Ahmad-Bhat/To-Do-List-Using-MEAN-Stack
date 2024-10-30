@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todoApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AngularJS To-Do List</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <div ng-app="todoApp" class="container" ng-controller="TodoController">
+      <h1>To-Do List</h1>
+      <div class="input-container">
+        <input type="text" ng-model="newTask" placeholder="Add a new task..." />
+        <button ng-click="addTask()">Add</button>
+      </div>
+      <ul>
+        <li
+          ng-repeat="task in tasks track by $index"
+          ng-class="{completed: task.completed}"
+        >
+          <!-- Toggle checkbox for task completion -->
+          <input
+            type="checkbox"
+            ng-model="task.completed"
+            ng-click="toggleComplete(task)"
+          />
+
+          <!-- Display task text -->
+          <span>{{ task.title }}</span>
+
+          <!-- Action buttons for task -->
+          <span class="task-actions">
+            <button ng-click="deleteTask($index)">✗</button>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
