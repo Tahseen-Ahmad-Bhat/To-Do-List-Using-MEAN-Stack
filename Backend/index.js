@@ -13,6 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// Routes to handle CRUD operation requests
 app.get("/get/todos", getTodos);
 
 app.post("/create/todo", createTodo);
